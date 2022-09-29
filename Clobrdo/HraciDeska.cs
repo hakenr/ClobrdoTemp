@@ -1,13 +1,10 @@
 ﻿namespace Clobrdo
 {
-	public class HraciDeska
+	public abstract class HraciDeska
 	{
-		public int MaximalniPocetHracu { get; private set; }
+		public abstract int MaximalniPocetHracu { get; }
 
-		public HraciDeska(int maximalniPocetHracu)
-		{
-			this.MaximalniPocetHracu = maximalniPocetHracu;
-		}
+		public abstract void PolozFigurkuNaStart(Figurka figurka);
 	}
 }
 												

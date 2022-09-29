@@ -1,6 +1,6 @@
 ﻿using Clobrdo;
 
-HraciDeska hraciDeska = new HraciDeska(2);
+HraciDeska hraciDeska = new LinearniHraciDeska(pocetPolicek: 10);
 Hra hra = new Hra(hraciDeska);
 
 Hrac hracRobert = new Hrac("Robert");
@@ -10,4 +10,6 @@ Hrac hracMartin = new Hrac("Martin");
 hra.PridejHrace(hracRobert);
 hra.PridejHrace(hracKarel);
 hra.PridejHrace(hracMartin);
+
+hra.Start();
 

@@ -8,8 +8,6 @@ namespace Clobrdo
 {
 	public class Hra
 	{
-		public int Score { get; set; }
-
 		List<Hrac> hraci = new();
 		HraciDeska hraciDeska;
 
@@ -17,6 +15,12 @@ namespace Clobrdo
 		{
 			if (hraci.Count < hraciDeska.MaximalniPocetHracu)
 			{
+				for (int i = 0; i < 4; i++)
+				{
+					Figurka figurka = new Figurka();
+					hrac.PridejFigurku(figurka);
+					hraciDeska.PolozFigurkuNaStart(figurka);
+				}
 				hraci.Add(hrac);
 			}
 			else
@@ -28,6 +32,24 @@ namespace Clobrdo
 		public Hra(HraciDeska hraciDeska)
 		{
 			this.hraciDeska = hraciDeska;
+		}
+
+		public void Start()
+		{
+			var kostka = new Kostka(6);
+
+			while (true)
+			{
+				if (hraci.Any(hrac => hrac.MaFigurkyVDomecku()))
+				{
+					Console.WriteLine("Máme vítěze, hra skončila.");
+				}
+				
+				foreach (var hrac in hraci)
+				{
+					int hod = kostka.Hod();
+				}
+			}
 		}
 	}
 }
