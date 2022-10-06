@@ -8,5 +8,14 @@ namespace Clobrdo
 {
 	public class StartovniPolicko : VicenasobnePolicko
 	{
+		public override void Vypis()
+		{
+			Console.Write("{");
+			foreach (var figurka in figurky)
+			{
+				figurka.Vypis();
+			}
+			Console.Write("}");
+		}
 	}
 }

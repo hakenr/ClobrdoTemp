@@ -36,9 +36,64 @@ namespace Clobrdo
 		{
 			if (policka[0] is not StartovniPolicko)
 			{
-				throw new InvalidOperationException("Něco je špatně.");
+				throw new InvalidOperationException("Něco je špatně, první políčko není startovní.");
 			}
 			policka[0].PolozFigurku(figurka);
+		}
+
+		public override bool JeFigurkaVDomecku(Figurka figurka)
+		{
+			var domecek = policka.Last();
+			if (domecek is not Domecek)
+			{
+				throw new InvalidOperationException("Něco je špatně, poslední políčko není domeček.");
+			}
+			return domecek.JeTamFigurka(figurka);
+		}
+
+		public override bool PosunFigurku(Figurka figurka, int pocetPolicek)
+		{
+			var pocatecniPolicko = DejPolicko(figurka);
+
+			var indexPocatecnihoPolicka = policka.IndexOf(pocatecniPolicko);
+			var indexCile = indexPocatecnihoPolicka + pocetPolicek;
+
+			if (indexCile > policka.Count - 1)
+			{
+				Console.WriteLine("Figurka musí trefit domeček přesně, zůstává na místě.");
+				return false;
+			}
+
+			var cilovePolicko = policka[indexCile];
+			
+			// vyhazování
+			var vyhozenaFigurka = cilovePolicko.DejFigurkuKVyhozeni();
+			if (vyhozenaFigurka != null)
+			{
+				cilovePolicko.ZvedniFigurku(vyhozenaFigurka);
+				
+				var startovniPolicko = policka.First();
+				startovniPolicko.PolozFigurku(vyhozenaFigurka);
+			}
+
+			pocatecniPolicko.ZvedniFigurku(figurka);
+			cilovePolicko.PolozFigurku(figurka);
+
+			return true;
+		}
+
+		private Policko? DejPolicko(Figurka figurka)
+		{
+			return policka.FirstOrDefault(policko => policko.JeTamFigurka(figurka));
+		}
+
+		public override void Vypis()
+		{
+			foreach (var policko in policka)
+			{
+				policko.Vypis();	
+			}
+			Console.WriteLine();
 		}
 	}
 }

@@ -17,7 +17,10 @@ namespace Clobrdo
 
 		public int Hod()
 		{
-			return Random.Shared.Next(1, pocetSten);
+			var hod = Random.Shared.Next(1, pocetSten);
+			Console.WriteLine($"Kostka hodila {hod}.");
+
+			return hod;
 		}
 	}
 }
