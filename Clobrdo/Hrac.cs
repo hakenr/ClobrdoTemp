@@ -8,7 +8,7 @@ namespace Clobrdo
 {
 	public class Hrac
 	{
-		public string Jmeno { get; init; }
+		public string Jmeno { get; }
 
 		public List<Figurka> Figurky { get; } = new();
 

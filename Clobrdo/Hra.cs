@@ -9,7 +9,7 @@ namespace Clobrdo
 	public class Hra
 	{
 		List<Hrac> hraci = new();
-		HraciDeska hraciDeska;
+		public HraciDeska hraciDeska;
 
 		public void PridejHrace(Hrac hrac)
 		{

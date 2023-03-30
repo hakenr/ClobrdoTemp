@@ -8,7 +8,7 @@ namespace Clobrdo
 {
 	public class Kostka
 	{
-		int pocetSten;
+		private int pocetSten;
 
 		public Kostka(int pocetSten)
 		{
